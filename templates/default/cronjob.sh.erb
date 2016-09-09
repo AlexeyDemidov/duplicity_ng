@@ -61,6 +61,10 @@ time nice -n <%= @nice %> ionice -c <%= @ionice %> $DUPLICITY_PATH \
   --exclude '**' \
   ${DUPLICITY_ARGUMENTS[@]} --gpg-options """$GPGOPT""" >> <%= @logfile %> 2>&1
 
+# Collection status
+nice -n <%= @nice %> ionice -c <%= @ionice %> $DUPLICITY_PATH collection-status \
+  ${DUPLICITY_ARGUMENTS[@]} >> <%= @logfile %> 2>&1
+
 # Unset all passphrases
 unset PASSPHRASE
 unset SWIFT_USERNAME
