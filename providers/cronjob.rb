@@ -72,6 +72,7 @@ action :create do
   template "/etc/cron.d/duplicity-#{new_resource.name}" do
     mode 0o640
     source 'cron.d.erb'
+    cookbook new_resource.cookbook
     variables interval: new_resource.interval,
               script: "/root/bin/duplicity-#{new_resource.name}",
               mail_to: new_resource.mail_to
