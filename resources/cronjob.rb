@@ -22,7 +22,8 @@ actions        :create, :delete
 default_action :create
 
 attribute :name,             kind_of: String, name_attribute: true
-attribute :interval,         kind_of: String, default: 'daily'
+attribute :interval,         kind_of: String, default: '@daily'
+attribute :mail_to,          kind_of: String, default: ''
 attribute :cookbook,         kind_of: String, default: 'duplicity_ng'
 attribute :source,           kind_of: String, default: 'cronjob.sh.erb'
 attribute :variables,        kind_of: Hash,   default: {}

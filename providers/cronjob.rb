@@ -63,8 +63,22 @@ action :create do
               compress_level: new_resource.compress_level
   end
 
-  # Deploy cronjob
-  template "/etc/cron.#{new_resource.interval}/duplicity-#{new_resource.name}" do
+  directory '/root/bin' do
+    owner 'root'
+    group 'root'
+    mode  0o755
+  end
+
+  template "/etc/cron.d/duplicity-#{new_resource.name}" do
+    mode 0o640
+    source 'cron.d.erb'
+    variables interval: new_resource.interval,
+              script: "/root/bin/duplicity-#{new_resource.name}",
+              mail_to: new_resource.mail_to
+  end
+
+  # Deploy script
+  template "/root/bin/duplicity-#{new_resource.name}" do
     mode     0o750
     source   new_resource.source
     cookbook new_resource.cookbook
