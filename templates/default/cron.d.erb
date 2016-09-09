@@ -1,4 +1,4 @@
-<% if @mail_to -%>
+<% unless @mail_to.empty? -%>
 MAILTO=<%= @mail_to %>
 <% end -%>
 <%= @interval %> root <%= @script %>
