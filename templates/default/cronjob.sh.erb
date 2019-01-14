@@ -21,6 +21,7 @@ cleanup() {
 }
 trap cleanup EXIT
 
+umask 077
 
 # Create archive/temp directories
 mkdir -p <%= @temp_dir %> >> <%= @logfile %> 2>&1
