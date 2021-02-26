@@ -8,7 +8,7 @@ set -o nounset
 set -o errexit
 
 # Make sure only one backup is run at a time
-lockfile -<%= @lockwait %> -r <%= @lockretries %>  "<%= @lockfile %>"
+lockfile -<%= @lockwait %> -r <%= @lockretries %>  "<%= @lockfile %>" || exit 1
 
 # Cleanup lockfile on exit
 cleanup() {
