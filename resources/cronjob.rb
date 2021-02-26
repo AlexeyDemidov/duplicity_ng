@@ -33,7 +33,7 @@ attribute :logfile,          kind_of: String, default: '/dev/null'
 attribute :lockfile,         kind_of: String, default: nil
 attribute :lockwait,         kind_of: String, default: '60'
 attribute :lockretries,      kind_of: String, default: '5'
-attribute :minage,           kind_of: String, default: '3600'
+attribute :minage,           kind_of: String, default: '1800'
 
 # Duplicity parameters
 attribute :backend,     kind_of: String,  required: true
