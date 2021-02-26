@@ -90,6 +90,8 @@ action :create do
                 temp_dir: new_resource.temp_dir,
                 logfile: new_resource.logfile,
                 lockfile: lockfile,
+                lockwait: lockwait,
+                lockretries: lockretries,
                 include: new_resource.include,
                 exclude: new_resource.exclude,
                 full_backup_if_older_than: new_resource.full_backup_if_older_than,
