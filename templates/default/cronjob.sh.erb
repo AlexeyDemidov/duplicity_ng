@@ -22,6 +22,16 @@ umask 077
 mkdir -p <%= @temp_dir %> >> <%= @logfile %> 2>&1
 mkdir -p <%= @archive_dir %> >> <%= @logfile %> 2>&1
 
+LAST_RUN_FILE="<%= @archive_dir %>/lastrun"
+MINAGE="<%= @minage %>"
+if [ -e $LAST_RUN_FILE ]; then
+  LAST_RUN=$(stat --format=%Y $LAST_RUN_FILE)
+  if [ $LAST_RUN -gt $(( $(date +%s) - ${MINAGE} )) ]; then
+    echo Last run finished $(( $(date +%s) - $LAST_RUN )) seconds ago, skipping
+    exit 1
+  fi
+fi
+
 <% Array(@exec_pre).each do |cmd| %>
 <%= cmd %>
 <% end -%>

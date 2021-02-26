@@ -92,6 +92,7 @@ action :create do
                 lockfile: lockfile,
                 lockwait: new_resource.lockwait,
                 lockretries: new_resource.lockretries,
+                minage: new_resource.minage,
                 include: new_resource.include,
                 exclude: new_resource.exclude,
                 full_backup_if_older_than: new_resource.full_backup_if_older_than,
