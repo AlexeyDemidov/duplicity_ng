@@ -8,12 +8,7 @@ set -o nounset
 set -o errexit
 
 # Make sure only one backup is run at a time
-if [ -f "<%= @lockfile %>" ]; then
-  echo "Duplicity is already running" >> <%= @logfile %> 2>&1
-  exit 0;
-else
-  touch "<%= @lockfile %>"
-fi
+lockfile -<%= @lockwait %> -r <%= @lockretries %>  "<%= @lockfile %>"
 
 # Cleanup lockfile on exit
 cleanup() {

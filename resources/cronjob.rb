@@ -30,7 +30,9 @@ attribute :variables,        kind_of: Hash,   default: {}
 attribute :duplicity_path,   kind_of: String, default: node['duplicity_ng']['path']
 attribute :configure_zabbix, kind_of: [TrueClass, FalseClass], default: false
 attribute :logfile,          kind_of: String, default: '/dev/null'
-attribute :lockfile,         kind_of: String, default: nil
+attribute :lockfile,         kind_of: String, default: '/tmp/duplicity-lock'
+attribute :lockwait,         kind_of: String, default: '60'
+attribute :lockretries,      kind_of: String, default: '5'
 
 # Duplicity parameters
 attribute :backend,     kind_of: String,  required: true

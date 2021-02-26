@@ -31,4 +31,5 @@ if pip?
   end
 end
 
+package 'procmail'
 package 'duplicity'
