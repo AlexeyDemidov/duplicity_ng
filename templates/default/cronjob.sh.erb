@@ -88,4 +88,4 @@ unset AZURE_ACCOUNT_KEY
 <%= cmd %>
 <% end -%>
 
-touch <%= @archive_dir %>/lastrun >> <%= @logfile %> 2>&1
+touch ${LAST_RUN_FILE} >> <%= @logfile %> 2>&1
